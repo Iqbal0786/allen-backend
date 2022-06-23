@@ -1,13 +1,15 @@
 const express= require("express");
 const connect =require("./config/db")
 const { register, login } = require("./controllers/auth.controller");
-const userController= require("./controllers/user.controller")
+const userController= require("./controllers/user.controller");
+const examinationController= require("./controllers/examination.controller")
 const cors=require("cors");
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 app.use("/users",userController)
+app.use("/examinations",examinationController)
 
 app.post("/register", register)
 app.post("/login", login)
